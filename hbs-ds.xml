@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datasources>
+	<datasource jndi-name="java:/hbsDB" pool-name="hbs" enabled="true" jta="true" use-ccm="false">
+		<connection-url>jdbc:mysql://hbs_db:3306/hbs?useCursorFetch=true&amp;defaultFetchSize=100</connection-url>
+		<driver>mysql</driver>
+		<pool>
+			<min-pool-size>5</min-pool-size>
+			<max-pool-size>10</max-pool-size>
+		</pool>
+		<security>
+			<user-name>sa</user-name>
+			<password>sa</password>
+		</security>
+	</datasource>
+</datasources>

@@ -1,0 +1,12 @@
+/.idea/
+/.settings/
+.classpath
+.project
+*.iml
+/bin/
+/content/
+/lib/
+/target/
+/javaee/hbs.war/
+/javaee/hbs.war.*
+/javaee/hbs-ds.xml.*

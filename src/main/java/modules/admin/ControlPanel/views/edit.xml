@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<view title="Control Panel" name="edit" xmlns="http://www.skyve.org/xml/view"
+	xsi:schemaLocation="http://www.skyve.org/xml/view ../../../../schemas/view.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<tabPane selectedTabIndexBinding="tabIndex">
+		<tab title="Design">
+			<form border="true" borderTitle="Generate">
+				<column pixelWidth="175" />
+				<column />
+				<column pixelWidth="100" />
+				<column pixelWidth="100" />
+				<row>
+					<item>
+						<combo binding="designModuleDocumentName" />
+					</item>
+					<item align="centre">
+						<button actionName="GenerateEditView" pixelWidth="90" />
+					</item>
+					<item align="centre">
+						<button actionName="GenerateQuery" pixelWidth="90" />
+					</item>
+				</row>
+			</form>
+			<form border="true" borderTitle="Swap Customer">
+				<column pixelWidth="175" />
+				<column />
+				<column pixelWidth="100" />
+				<row>
+					<item>
+						<combo binding="customerNameToSwapTo" />
+					</item>
+					<item align="centre">
+						<button actionName="SwapCustomer" pixelWidth="90" />
+					</item>
+				</row>
+			</form>
+			<form border="true" borderTitle="Test Email">
+				<column pixelWidth="175" />
+				<column />
+				<column pixelWidth="110" />
+				<column />
+				<row>
+					<item>
+						<textField binding="emailTo" />
+					</item>
+					<item label="OR Contact Email">
+						<lookupDescription binding="emailToContact" descriptionBinding="email1">
+							<filterParameter name="email1" operator="notNull" />
+						</lookupDescription>
+					</item>
+				</row>
+				<row>
+					<item>
+						<textField binding="emailSubject" />
+					</item>
+				</row>
+				<row>
+					<item showLabel="true">
+						<richText binding="emailContent" minPixelHeight="100" pixelWidth="400" pixelHeight="100" maxPixelHeight="100" />
+					</item>
+				</row>
+				<row>
+					<item colspan="2" align="right">
+						<button actionName="SendMail" pixelWidth="90" />
+					</item>
+				</row>
+			</form>
+			<form border="true" borderTitle="Query">
+				<column pixelWidth="175" />
+				<column />
+				<column pixelWidth="100" />
+				<row>
+					<item>
+						<textArea binding="query" wrap="true" />
+					</item>
+					<item align="centre">
+						<button actionName="ExecuteQuery" pixelWidth="90" />
+					</item>
+				</row>
+			</form>
+		</tab>
+		<tab title="Results">
+			<form>
+				<column />
+				<row>
+					<item>
+						<blurb>
+							<![CDATA[
+								<pre>
+									{results}
+								</pre>
+							]]>
+						</blurb>
+					</item>
+				</row>
+			</form>
+		</tab>
+		<tab title="Instrumentation">
+			<form border="true" borderTitle="Web">
+				<column responsiveWidth="1" />
+				<column responsiveWidth="1" />
+				<column />
+				<row>
+					<item>
+						<checkBox binding="httpTrace" triState="false">
+							<onChangedHandlers>
+								<rerender />
+							</onChangedHandlers>
+						</checkBox>
+					</item>
+				</row>
+				<row>
+					<item>
+						<checkBox binding="commandTrace" triState="false">
+							<onChangedHandlers>
+								<rerender />
+							</onChangedHandlers>
+						</checkBox>
+					</item>
+				</row>
+				<row>
+					<item>
+						<checkBox binding="facesTrace" triState="false">
+							<onChangedHandlers>
+								<rerender />
+							</onChangedHandlers>
+						</checkBox>
+					</item>
+				</row>
+			</form>
+			<form border="true" borderTitle="Data">
+				<column responsiveWidth="1" />
+				<column responsiveWidth="1" />
+				<column responsiveWidth="1" />
+				<column responsiveWidth="1" />
+				<column />
+				<row>
+					<item>
+						<checkBox binding="queryTrace" triState="false">
+							<onChangedHandlers>
+								<rerender />
+							</onChangedHandlers>
+						</checkBox>
+					</item>
+				</row>
+<!-- Cant influence these 2 settings as they are set in the hibernate session factory
+				<row>
+					<item>
+						<checkBox binding="sqlTrace" triState="false">
+							<onChangedHandlers>
+								<rerender />
+							</onChangedHandlers>
+						</checkBox>
+					</item>
+					<item>
+						<checkBox binding="prettySqlOutput" triState="false">
+							<onChangedHandlers>
+								<rerender />
+							</onChangedHandlers>
+						</checkBox>
+					</item>
+				</row>
+-->
+				<row>
+					<item>
+						<checkBox binding="contentTrace" triState="false">
+							<onChangedHandlers>
+								<rerender />
+							</onChangedHandlers>
+						</checkBox>
+					</item>
+				</row>
+			</form>
+			<form border="true" borderTitle="Behaviour">
+				<column responsiveWidth="1" />
+				<column responsiveWidth="1" />
+				<column />
+				<row>
+					<item>
+						<checkBox binding="xmlTrace" triState="false">
+							<onChangedHandlers>
+								<rerender />
+							</onChangedHandlers>
+						</checkBox>
+					</item>
+				</row>
+				<row>
+					<item>
+						<checkBox binding="securityTrace" triState="false">
+							<onChangedHandlers>
+								<rerender />
+							</onChangedHandlers>
+						</checkBox>
+					</item>
+				</row>
+				<row>
+					<item>
+						<checkBox binding="bizletTrace" triState="false">
+							<onChangedHandlers>
+								<rerender />
+							</onChangedHandlers>
+						</checkBox>
+					</item>
+				</row>
+				<row>
+					<item>
+						<checkBox binding="dirtyTrace" triState="false">
+							<onChangedHandlers>
+								<rerender />
+							</onChangedHandlers>
+						</checkBox>
+					</item>
+				</row>
+			</form>
+		</tab>
+	</tabPane>
+	<actions>
+		<action className="EvictFromCache" displayName="Evict All Cached Metadata" />
+		<action className="SwapCustomer" displayName="Swap Customer" inActionPanel="false" />
+		<action className="GenerateEditView" displayName="Edit View" inActionPanel="false" />
+		<action className="GenerateQuery" displayName="Query XML" inActionPanel="false" />
+		<action className="SendMail" displayName="Send Mail" inActionPanel="false" />
+		<action className="ExecuteQuery" displayName="Execute" inActionPanel="false" />
+	</actions>
+</view>
