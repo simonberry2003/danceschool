@@ -7,7 +7,7 @@ services:
     image: 'mysql'
     restart: always
     ports:
-      - '3307:3306'
+      - '3306:3306'
     expose:
       - '3306'
     environment:
@@ -19,7 +19,7 @@ services:
     container_name: hbs_wildfly
     image: 'bizhubaustralia/skyve-wildfly-mysql'
     ports:
-      - '8081:8080'
+      - '8082:8081'
       - '9991:9990'
       - '8788:8787'
     environment:
@@ -27,7 +27,7 @@ services:
       SKYVE_CONTENT: '/content/'
       SKYVE_DATASTORE_DIALECT: 'org.skyve.impl.persistence.hibernate.dialect.MySQL56InnoDBSpatialDialect'
       SKYVE_HOSTNAME: 'localhost'
-      SKYVE_PORT: '8081'
+      SKYVE_PORT: '8082'
       DATABASE_URL: 'hbs_db'
       DATABASE_PORT: '3306'
       SKYVE_SECURITY_DOMAIN_NAME: 'hbs'

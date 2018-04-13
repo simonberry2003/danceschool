@@ -12,7 +12,7 @@
 		// JSF inner workings
 		faces: false,
 		// generated SQL statements
-		sql: false,
+		sql: true,
 		// content manipulation
 		content: false,
 		// application security denials
@@ -54,7 +54,7 @@
 			// JNDI name
 			jndi: "java:/hbsDB",
 			// Dialect
-			dialect: "${SKYVE_DATASTORE_DIALECT:org.skyve.impl.persistence.hibernate.dialect.H2SpatialDialect}"
+            dialect: "org.skyve.impl.persistence.hibernate.dialect.MySQL5InnoDBSpatialDialect"
 		}
 	},
 	// Hibernate settings
