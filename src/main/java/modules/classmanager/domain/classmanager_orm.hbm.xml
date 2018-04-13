@@ -1,0 +1,400 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-access="field">
+
+	<typedef name="OptimisticLock" class="org.skyve.impl.domain.types.OptimisticLockUserType" />
+	<typedef name="Decimal2" class="org.skyve.impl.domain.types.Decimal2UserType" />
+	<typedef name="Decimal5" class="org.skyve.impl.domain.types.Decimal5UserType" />
+	<typedef name="Decimal10" class="org.skyve.impl.domain.types.Decimal10UserType" />
+	<typedef name="DateOnly" class="org.skyve.impl.domain.types.DateOnlyUserType" />
+	<typedef name="DateTime" class="org.skyve.impl.domain.types.DateTimeUserType" />
+	<typedef name="TimeOnly" class="org.skyve.impl.domain.types.TimeOnlyUserType" />
+	<typedef name="Timestamp" class="org.skyve.impl.domain.types.TimestampUserType" />
+	<typedef name="Enum" class="org.skyve.impl.domain.types.EnumUserType" />
+	<class name="modules.classmanager.Address.AddressExtension" table="CM_Address" entity-name="classmanagerAddress">
+		<id name="bizId" length="36" />
+		<version name="bizVersion" unsaved-value="null" />
+		<property name="bizLock" type="OptimisticLock" length="271" not-null="true" />
+		<property name="bizKey" length="1024" index="IDX_bizKey" not-null="true" />
+		<property name="bizCustomer" length="50" index="IDX_bizCustomer" not-null="true" />
+		<property name="bizFlagComment" length="1024" />
+		<property name="bizDataGroupId" length="36" />
+		<property name="bizUserId" length="36" index="IDX_bizUserId" not-null="true" />
+		<property name="streetAddress" length="200" />
+		<property name="suburb" length="50" />
+		<property name="state" length="3">
+			<type name="Enum">
+				<param name="enumClass">modules.classmanager.domain.Address$State</param>
+			</type>
+		</property>
+		<property name="postcode" />
+		<filter name="classmanagerAddressNoneFilter" condition="1=0"/>
+		<filter name="classmanagerAddressCustomerFilter" condition="bizCustomer=:customerParam"/>
+		<filter name="classmanagerAddressDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>
+		<filter name="classmanagerAddressUserIdFilter" condition="bizUserId=:userIdParam"/>
+	</class>
+
+	<class name="modules.classmanager.Attachment.AttachmentExtension" table="CM_Attachment" entity-name="classmanagerAttachment">
+		<id name="bizId" length="36" />
+		<version name="bizVersion" unsaved-value="null" />
+		<property name="bizLock" type="OptimisticLock" length="271" not-null="true" />
+		<property name="bizKey" length="1024" index="IDX_bizKey" not-null="true" />
+		<property name="bizCustomer" length="50" index="IDX_bizCustomer" not-null="true" />
+		<property name="bizFlagComment" length="1024" />
+		<property name="bizDataGroupId" length="36" />
+		<property name="bizUserId" length="36" index="IDX_bizUserId" not-null="true" />
+		<property name="name" length="100" />
+		<property name="content" length="36" />
+		<filter name="classmanagerAttachmentNoneFilter" condition="1=0"/>
+		<filter name="classmanagerAttachmentCustomerFilter" condition="bizCustomer=:customerParam"/>
+		<filter name="classmanagerAttachmentDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>
+		<filter name="classmanagerAttachmentUserIdFilter" condition="bizUserId=:userIdParam"/>
+	</class>
+
+		<class name="modules.classmanager.Class.ClassExtension" table="CM_Class" entity-name="classmanagerClass">
+			<id name="bizId" length="36" />
+			<version name="bizVersion" unsaved-value="null" />
+			<property name="bizLock" type="OptimisticLock" length="271" not-null="true" />
+			<property name="bizKey" length="1024" index="IDX_bizKey" not-null="true" />
+			<property name="bizCustomer" length="50" index="IDX_bizCustomer" not-null="true" />
+			<property name="bizFlagComment" length="1024" />
+			<property name="bizDataGroupId" length="36" />
+			<property name="bizUserId" length="36" index="IDX_bizUserId" not-null="true" />
+			<many-to-one name="type" entity-name="classmanagerClassType" column="type_id" cascade="persist,save-update,refresh,merge" index="IDX_type" foreign-key="FK_CM_Class_type" />
+			<many-to-one name="venue" entity-name="classmanagerVenue" column="venue_id" cascade="persist,save-update,refresh,merge" index="IDX_venue" foreign-key="FK_CM_Class_venue" />
+			<property name="day" length="9">
+				<type name="Enum">
+					<param name="enumClass">modules.classmanager.domain.ClassBase$Day</param>
+				</type>
+			</property>
+			<property name="startTime" type="TimeOnly" />
+			<property name="endTime" type="TimeOnly" />
+			<property name="date" type="DateOnly" />
+			<filter name="classmanagerClassNoneFilter" condition="1=0"/>
+			<filter name="classmanagerClassCustomerFilter" condition="bizCustomer=:customerParam"/>
+			<filter name="classmanagerClassDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>
+			<filter name="classmanagerClassUserIdFilter" condition="bizUserId=:userIdParam"/>
+		</class>
+
+		<class name="modules.classmanager.ClassDefinition.ClassDefinitionExtension" table="CM_ClassDefinition" entity-name="classmanagerClassDefinition">
+			<id name="bizId" length="36" />
+			<version name="bizVersion" unsaved-value="null" />
+			<property name="bizLock" type="OptimisticLock" length="271" not-null="true" />
+			<property name="bizKey" length="1024" index="IDX_bizKey" not-null="true" />
+			<property name="bizCustomer" length="50" index="IDX_bizCustomer" not-null="true" />
+			<property name="bizFlagComment" length="1024" />
+			<property name="bizDataGroupId" length="36" />
+			<property name="bizUserId" length="36" index="IDX_bizUserId" not-null="true" />
+			<many-to-one name="type" entity-name="classmanagerClassType" column="type_id" cascade="persist,save-update,refresh,merge" index="IDX_type" foreign-key="FK_CM_ClassDefinition_type" />
+			<many-to-one name="venue" entity-name="classmanagerVenue" column="venue_id" cascade="persist,save-update,refresh,merge" index="IDX_venue" foreign-key="FK_CM_ClassDefinition_venue" />
+			<property name="day" length="9">
+				<type name="Enum">
+					<param name="enumClass">modules.classmanager.domain.ClassBase$Day</param>
+				</type>
+			</property>
+			<property name="startTime" type="TimeOnly" />
+			<property name="endTime" type="TimeOnly" />
+			<filter name="classmanagerClassDefinitionNoneFilter" condition="1=0"/>
+			<filter name="classmanagerClassDefinitionCustomerFilter" condition="bizCustomer=:customerParam"/>
+			<filter name="classmanagerClassDefinitionDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>
+			<filter name="classmanagerClassDefinitionUserIdFilter" condition="bizUserId=:userIdParam"/>
+		</class>
+
+	<class name="modules.classmanager.ClassType.ClassTypeExtension" table="CM_ClassType" entity-name="classmanagerClassType">
+		<id name="bizId" length="36" />
+		<version name="bizVersion" unsaved-value="null" />
+		<property name="bizLock" type="OptimisticLock" length="271" not-null="true" />
+		<property name="bizKey" length="1024" index="IDX_bizKey" not-null="true" />
+		<property name="bizCustomer" length="50" index="IDX_bizCustomer" not-null="true" />
+		<property name="bizFlagComment" length="1024" />
+		<property name="bizDataGroupId" length="36" />
+		<property name="bizUserId" length="36" index="IDX_bizUserId" not-null="true" />
+		<property name="name" length="100" />
+		<property name="cost" type="Decimal2" precision="20" scale="2" />
+		<property name="size" />
+		<filter name="classmanagerClassTypeNoneFilter" condition="1=0"/>
+		<filter name="classmanagerClassTypeCustomerFilter" condition="bizCustomer=:customerParam"/>
+		<filter name="classmanagerClassTypeDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>
+		<filter name="classmanagerClassTypeUserIdFilter" condition="bizUserId=:userIdParam"/>
+	</class>
+
+	<class name="modules.classmanager.Client.ClientExtension" table="CM_Client" entity-name="classmanagerClient">
+		<id name="bizId" length="36" />
+		<version name="bizVersion" unsaved-value="null" />
+		<property name="bizLock" type="OptimisticLock" length="271" not-null="true" />
+		<property name="bizKey" length="1024" index="IDX_bizKey" not-null="true" />
+		<property name="bizCustomer" length="50" index="IDX_bizCustomer" not-null="true" />
+		<property name="bizFlagComment" length="1024" />
+		<property name="bizDataGroupId" length="36" />
+		<property name="bizUserId" length="36" index="IDX_bizUserId" not-null="true" />
+		<property name="clientId" />
+		<many-to-one name="contact" entity-name="classmanagerContact" column="contact_id" cascade="persist,save-update,refresh,delete,merge" index="IDX_contact" foreign-key="FK_CM_Client_contact" />
+		<bag name="students" table="CM_Client_students" cascade="all-delete-orphan">
+			<key foreign-key="FK_CM_Client_students_owner_id">
+				<column name="owner_id" index="IDX_owner_id" />
+			</key>
+			<many-to-many entity-name="classmanagerStudent" foreign-key="FK_CM_Client_students_element_id">
+				<column name="element_id" index="IDX_element_id" />
+			</many-to-many>
+		</bag>
+		<filter name="classmanagerClientNoneFilter" condition="1=0"/>
+		<filter name="classmanagerClientCustomerFilter" condition="bizCustomer=:customerParam"/>
+		<filter name="classmanagerClientDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>
+		<filter name="classmanagerClientUserIdFilter" condition="bizUserId=:userIdParam"/>
+	</class>
+
+	<class name="modules.classmanager.Contact.ContactExtension" table="CM_Contact" entity-name="classmanagerContact">
+		<id name="bizId" length="36" />
+		<version name="bizVersion" unsaved-value="null" />
+		<property name="bizLock" type="OptimisticLock" length="271" not-null="true" />
+		<property name="bizKey" length="1024" index="IDX_bizKey" not-null="true" />
+		<property name="bizCustomer" length="50" index="IDX_bizCustomer" not-null="true" />
+		<property name="bizFlagComment" length="1024" />
+		<property name="bizDataGroupId" length="36" />
+		<property name="bizUserId" length="36" index="IDX_bizUserId" not-null="true" />
+		<property name="firstName" length="100" />
+		<property name="lastName" length="100" />
+		<property name="email" length="100" />
+		<property name="phoneNumber" length="20" />
+		<many-to-one name="address" entity-name="classmanagerAddress" column="address_id" cascade="persist,save-update,refresh,delete,merge" index="IDX_address" foreign-key="FK_CM_Contact_address" />
+		<property name="image" length="36" />
+		<filter name="classmanagerContactNoneFilter" condition="1=0"/>
+		<filter name="classmanagerContactCustomerFilter" condition="bizCustomer=:customerParam"/>
+		<filter name="classmanagerContactDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>
+		<filter name="classmanagerContactUserIdFilter" condition="bizUserId=:userIdParam"/>
+	</class>
+
+	<class name="modules.classmanager.Period.PeriodExtension" table="CM_Period" entity-name="classmanagerPeriod">
+		<id name="bizId" length="36" />
+		<version name="bizVersion" unsaved-value="null" />
+		<property name="bizLock" type="OptimisticLock" length="271" not-null="true" />
+		<property name="bizKey" length="1024" index="IDX_bizKey" not-null="true" />
+		<property name="bizCustomer" length="50" index="IDX_bizCustomer" not-null="true" />
+		<property name="bizFlagComment" length="1024" />
+		<property name="bizDataGroupId" length="36" />
+		<property name="bizUserId" length="36" index="IDX_bizUserId" not-null="true" />
+		<property name="name" length="100" />
+		<property name="start" type="DateOnly" />
+		<property name="end" type="DateOnly" />
+		<property name="active" />
+		<filter name="classmanagerPeriodNoneFilter" condition="1=0"/>
+		<filter name="classmanagerPeriodCustomerFilter" condition="bizCustomer=:customerParam"/>
+		<filter name="classmanagerPeriodDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>
+		<filter name="classmanagerPeriodUserIdFilter" condition="bizUserId=:userIdParam"/>
+	</class>
+
+	<class name="modules.classmanager.Student.StudentExtension" table="CM_Student" entity-name="classmanagerStudent">
+		<id name="bizId" length="36" />
+		<version name="bizVersion" unsaved-value="null" />
+		<property name="bizLock" type="OptimisticLock" length="271" not-null="true" />
+		<property name="bizKey" length="1024" index="IDX_bizKey" not-null="true" />
+		<property name="bizCustomer" length="50" index="IDX_bizCustomer" not-null="true" />
+		<property name="bizFlagComment" length="1024" />
+		<property name="bizDataGroupId" length="36" />
+		<property name="bizUserId" length="36" index="IDX_bizUserId" not-null="true" />
+		<property name="studentId" />
+		<property name="firstName" length="100" />
+		<property name="lastName" length="100" />
+		<property name="dateOfBirth" type="DateOnly" />
+		<property name="medical" length="1000" />
+		<property name="image" length="36" />
+		<filter name="classmanagerStudentNoneFilter" condition="1=0"/>
+		<filter name="classmanagerStudentCustomerFilter" condition="bizCustomer=:customerParam"/>
+		<filter name="classmanagerStudentDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>
+		<filter name="classmanagerStudentUserIdFilter" condition="bizUserId=:userIdParam"/>
+	</class>
+
+	<class name="modules.classmanager.Teacher.TeacherExtension" table="CM_Teacher" entity-name="classmanagerTeacher">
+		<id name="bizId" length="36" />
+		<version name="bizVersion" unsaved-value="null" />
+		<property name="bizLock" type="OptimisticLock" length="271" not-null="true" />
+		<property name="bizKey" length="1024" index="IDX_bizKey" not-null="true" />
+		<property name="bizCustomer" length="50" index="IDX_bizCustomer" not-null="true" />
+		<property name="bizFlagComment" length="1024" />
+		<property name="bizDataGroupId" length="36" />
+		<property name="bizUserId" length="36" index="IDX_bizUserId" not-null="true" />
+		<many-to-one name="contact" entity-name="classmanagerContact" column="contact_id" cascade="persist,save-update,refresh,delete,merge" index="IDX_contact" foreign-key="FK_CM_Teacher_contact" />
+		<bag name="documents" table="CM_Teacher_documents" cascade="all-delete-orphan">
+			<key foreign-key="FK_CM_Teacher_documents_owner_id">
+				<column name="owner_id" index="IDX_owner_id" />
+			</key>
+			<many-to-many entity-name="classmanagerAttachment" foreign-key="FK_CM_Teacher_documents_element_id">
+				<column name="element_id" index="IDX_element_id" />
+			</many-to-many>
+		</bag>
+		<filter name="classmanagerTeacherNoneFilter" condition="1=0"/>
+		<filter name="classmanagerTeacherCustomerFilter" condition="bizCustomer=:customerParam"/>
+		<filter name="classmanagerTeacherDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>
+		<filter name="classmanagerTeacherUserIdFilter" condition="bizUserId=:userIdParam"/>
+	</class>
+
+	<class name="modules.classmanager.TimeTable.TimeTableExtension" table="CM_TimeTable" entity-name="classmanagerTimeTable">
+		<id name="bizId" length="36" />
+		<version name="bizVersion" unsaved-value="null" />
+		<property name="bizLock" type="OptimisticLock" length="271" not-null="true" />
+		<property name="bizKey" length="1024" index="IDX_bizKey" not-null="true" />
+		<property name="bizCustomer" length="50" index="IDX_bizCustomer" not-null="true" />
+		<property name="bizFlagComment" length="1024" />
+		<property name="bizDataGroupId" length="36" />
+		<property name="bizUserId" length="36" index="IDX_bizUserId" not-null="true" />
+		<property name="name" length="100" />
+		<bag name="classes" table="CM_TimeTable_classes" cascade="all-delete-orphan">
+			<key foreign-key="FK_CM_TimeTable_classes_owner_id">
+				<column name="owner_id" index="IDX_owner_id" />
+			</key>
+			<many-to-many entity-name="classmanagerClassDefinition" foreign-key="FK_CM_TimeTable_classes_element_id">
+				<column name="element_id" index="IDX_element_id" />
+			</many-to-many>
+		</bag>
+		<filter name="classmanagerTimeTableNoneFilter" condition="1=0"/>
+		<filter name="classmanagerTimeTableCustomerFilter" condition="bizCustomer=:customerParam"/>
+		<filter name="classmanagerTimeTableDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>
+		<filter name="classmanagerTimeTableUserIdFilter" condition="bizUserId=:userIdParam"/>
+	</class>
+
+	<class name="modules.classmanager.Venue.VenueExtension" table="CM_Venue" entity-name="classmanagerVenue">
+		<id name="bizId" length="36" />
+		<version name="bizVersion" unsaved-value="null" />
+		<property name="bizLock" type="OptimisticLock" length="271" not-null="true" />
+		<property name="bizKey" length="1024" index="IDX_bizKey" not-null="true" />
+		<property name="bizCustomer" length="50" index="IDX_bizCustomer" not-null="true" />
+		<property name="bizFlagComment" length="1024" />
+		<property name="bizDataGroupId" length="36" />
+		<property name="bizUserId" length="36" index="IDX_bizUserId" not-null="true" />
+		<property name="name" length="100" />
+		<many-to-one name="address" entity-name="classmanagerAddress" column="address_id" cascade="persist,save-update,refresh,delete,merge" index="IDX_address" foreign-key="FK_CM_Venue_address" />
+		<bag name="contacts" table="CM_Venue_contacts" cascade="all-delete-orphan">
+			<key foreign-key="FK_CM_Venue_contacts_owner_id">
+				<column name="owner_id" index="IDX_owner_id" />
+			</key>
+			<many-to-many entity-name="classmanagerContact" foreign-key="FK_CM_Venue_contacts_element_id">
+				<column name="element_id" index="IDX_element_id" />
+			</many-to-many>
+		</bag>
+		<filter name="classmanagerVenueNoneFilter" condition="1=0"/>
+		<filter name="classmanagerVenueCustomerFilter" condition="bizCustomer=:customerParam"/>
+		<filter name="classmanagerVenueDataGroupIdFilter" condition="bizDataGroupId=:dataGroupIdParam"/>
+		<filter name="classmanagerVenueUserIdFilter" condition="bizUserId=:userIdParam"/>
+	</class>
+
+	<filter-def name="classmanagerAddressNoneFilter" />
+	<filter-def name="classmanagerAddressCustomerFilter">
+		<filter-param name="customerParam" type="string"/>
+	</filter-def>
+	<filter-def name="classmanagerAddressDataGroupIdFilter">
+		<filter-param name="dataGroupIdParam" type="string"/>
+	</filter-def>
+	<filter-def name="classmanagerAddressUserIdFilter">
+		<filter-param name="userIdParam" type="string"/>
+	</filter-def>
+	<filter-def name="classmanagerAttachmentNoneFilter" />
+	<filter-def name="classmanagerAttachmentCustomerFilter">
+		<filter-param name="customerParam" type="string"/>
+	</filter-def>
+	<filter-def name="classmanagerAttachmentDataGroupIdFilter">
+		<filter-param name="dataGroupIdParam" type="string"/>
+	</filter-def>
+	<filter-def name="classmanagerAttachmentUserIdFilter">
+		<filter-param name="userIdParam" type="string"/>
+	</filter-def>
+	<filter-def name="classmanagerClassNoneFilter" />
+	<filter-def name="classmanagerClassCustomerFilter">
+		<filter-param name="customerParam" type="string"/>
+	</filter-def>
+	<filter-def name="classmanagerClassDataGroupIdFilter">
+		<filter-param name="dataGroupIdParam" type="string"/>
+	</filter-def>
+	<filter-def name="classmanagerClassUserIdFilter">
+		<filter-param name="userIdParam" type="string"/>
+	</filter-def>
+	<filter-def name="classmanagerClassDefinitionNoneFilter" />
+	<filter-def name="classmanagerClassDefinitionCustomerFilter">
+		<filter-param name="customerParam" type="string"/>
+	</filter-def>
+	<filter-def name="classmanagerClassDefinitionDataGroupIdFilter">
+		<filter-param name="dataGroupIdParam" type="string"/>
+	</filter-def>
+	<filter-def name="classmanagerClassDefinitionUserIdFilter">
+		<filter-param name="userIdParam" type="string"/>
+	</filter-def>
+	<filter-def name="classmanagerClassTypeNoneFilter" />
+	<filter-def name="classmanagerClassTypeCustomerFilter">
+		<filter-param name="customerParam" type="string"/>
+	</filter-def>
+	<filter-def name="classmanagerClassTypeDataGroupIdFilter">
+		<filter-param name="dataGroupIdParam" type="string"/>
+	</filter-def>
+	<filter-def name="classmanagerClassTypeUserIdFilter">
+		<filter-param name="userIdParam" type="string"/>
+	</filter-def>
+	<filter-def name="classmanagerClientNoneFilter" />
+	<filter-def name="classmanagerClientCustomerFilter">
+		<filter-param name="customerParam" type="string"/>
+	</filter-def>
+	<filter-def name="classmanagerClientDataGroupIdFilter">
+		<filter-param name="dataGroupIdParam" type="string"/>
+	</filter-def>
+	<filter-def name="classmanagerClientUserIdFilter">
+		<filter-param name="userIdParam" type="string"/>
+	</filter-def>
+	<filter-def name="classmanagerContactNoneFilter" />
+	<filter-def name="classmanagerContactCustomerFilter">
+		<filter-param name="customerParam" type="string"/>
+	</filter-def>
+	<filter-def name="classmanagerContactDataGroupIdFilter">
+		<filter-param name="dataGroupIdParam" type="string"/>
+	</filter-def>
+	<filter-def name="classmanagerContactUserIdFilter">
+		<filter-param name="userIdParam" type="string"/>
+	</filter-def>
+	<filter-def name="classmanagerPeriodNoneFilter" />
+	<filter-def name="classmanagerPeriodCustomerFilter">
+		<filter-param name="customerParam" type="string"/>
+	</filter-def>
+	<filter-def name="classmanagerPeriodDataGroupIdFilter">
+		<filter-param name="dataGroupIdParam" type="string"/>
+	</filter-def>
+	<filter-def name="classmanagerPeriodUserIdFilter">
+		<filter-param name="userIdParam" type="string"/>
+	</filter-def>
+	<filter-def name="classmanagerStudentNoneFilter" />
+	<filter-def name="classmanagerStudentCustomerFilter">
+		<filter-param name="customerParam" type="string"/>
+	</filter-def>
+	<filter-def name="classmanagerStudentDataGroupIdFilter">
+		<filter-param name="dataGroupIdParam" type="string"/>
+	</filter-def>
+	<filter-def name="classmanagerStudentUserIdFilter">
+		<filter-param name="userIdParam" type="string"/>
+	</filter-def>
+	<filter-def name="classmanagerTeacherNoneFilter" />
+	<filter-def name="classmanagerTeacherCustomerFilter">
+		<filter-param name="customerParam" type="string"/>
+	</filter-def>
+	<filter-def name="classmanagerTeacherDataGroupIdFilter">
+		<filter-param name="dataGroupIdParam" type="string"/>
+	</filter-def>
+	<filter-def name="classmanagerTeacherUserIdFilter">
+		<filter-param name="userIdParam" type="string"/>
+	</filter-def>
+	<filter-def name="classmanagerTimeTableNoneFilter" />
+	<filter-def name="classmanagerTimeTableCustomerFilter">
+		<filter-param name="customerParam" type="string"/>
+	</filter-def>
+	<filter-def name="classmanagerTimeTableDataGroupIdFilter">
+		<filter-param name="dataGroupIdParam" type="string"/>
+	</filter-def>
+	<filter-def name="classmanagerTimeTableUserIdFilter">
+		<filter-param name="userIdParam" type="string"/>
+	</filter-def>
+	<filter-def name="classmanagerVenueNoneFilter" />
+	<filter-def name="classmanagerVenueCustomerFilter">
+		<filter-param name="customerParam" type="string"/>
+	</filter-def>
+	<filter-def name="classmanagerVenueDataGroupIdFilter">
+		<filter-param name="dataGroupIdParam" type="string"/>
+	</filter-def>
+	<filter-def name="classmanagerVenueUserIdFilter">
+		<filter-param name="userIdParam" type="string"/>
+	</filter-def>
+</hibernate-mapping>

@@ -5,8 +5,9 @@
     <defaultTimeConverter>HH24_MI</defaultTimeConverter>
     <defaultDateTimeConverter>DD_MM_YYYY_HH24_MI</defaultDateTimeConverter>
     <defaultTimestampConverter>DD_MM_YYYY_HH24_MI_SS</defaultTimestampConverter>
-    <modules homeModule="admin">
+    <modules homeModule="classmanager">
         <module name="admin"/>
+        <module name="classmanager"/>
     </modules>
     <interceptors>
         <interceptor className="modules.RDBMSAuditInterceptor"/>

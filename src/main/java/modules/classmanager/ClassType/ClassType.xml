@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<document name="ClassType" xmlns="http://www.skyve.org/xml/document" xsi:schemaLocation="http://www.skyve.org/xml/document ../../../schemas/document.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<documentation>Class Details</documentation>
+	<persistent name="CM_ClassType" />
+	<singularAlias>Class</singularAlias>
+	<pluralAlias>Classes</pluralAlias>
+	<bizKey>
+		<![CDATA[throw new java.lang.IllegalArgumentException("Overidden in extension class");]]>
+	</bizKey>
+	<attributes>
+		<text name="name" required="true">
+			<displayName>Name</displayName>
+			<length>100</length>
+		</text>
+		<decimal2 name="cost" required="true">
+			<displayName>Cost</displayName>
+		</decimal2>
+		<integer name="size" required="true">
+			<displayName>Size</displayName>
+		</integer>
+	</attributes>
+</document>

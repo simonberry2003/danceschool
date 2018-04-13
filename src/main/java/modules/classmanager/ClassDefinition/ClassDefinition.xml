@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<document name="ClassDefinition" xmlns="http://www.skyve.org/xml/document"
+	xsi:schemaLocation="http://www.skyve.org/xml/document ../../../schemas/document.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<documentation>Defines a class as part of a timetable. Used to generate classes.</documentation>
+	<extends document="ClassBase" />
+	<persistent name="CM_ClassDefinition" />
+	<singularAlias>Class Definition</singularAlias>
+	<pluralAlias>Class Definitions</pluralAlias>
+	<bizKey>
+		<![CDATA[return super.getBizKey();]]>
+	</bizKey>
+	<attributes>
+	</attributes>
+</document>

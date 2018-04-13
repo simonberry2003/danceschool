@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<view name="edit" title="Student" xmlns="http://www.skyve.org/xml/view"
+	xsi:schemaLocation="http://www.skyve.org/xml/view ../../../../schemas/view.xsd"
+	xmlns:c="http://www.skyve.org/xml/common"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<form border="true" borderTitle="Teacher Details">
+		<column percentageWidth="10"/>
+		<column percentageWidth="20"/>
+		<column percentageWidth="10"/>
+		<column percentageWidth="20"/>
+		<column/>
+		<row>
+			<item>
+				<textField binding="studentId" editable="false" />
+			</item>
+			<item rowspan="5">
+				<contentImage binding="image" pixelHeight="160" pixelWidth="160"/>
+			</item>
+		</row>
+		<row>
+			<item>
+				<default binding="firstName" />
+			</item>
+		</row>
+		<row>
+			<item>
+				<default binding="lastName" />
+			</item>
+		</row>
+		<row>
+			<item>
+				<default binding="dateOfBirth" />
+			</item>
+		</row>
+		<row>
+			<item>
+				<textArea binding="medical" />
+			</item>
+		</row>
+	</form>
+	<actions>
+		<defaults/>
+	</actions>
+</view>

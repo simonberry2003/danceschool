@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<document name="ClassBase" xmlns="http://www.skyve.org/xml/document"
+	xsi:schemaLocation="http://www.skyve.org/xml/document ../../../schemas/document.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<documentation>Defines a attributes shared between class definition and class.</documentation>
+	<persistent strategy="mapped" />
+	<singularAlias>Class Base</singularAlias>
+	<pluralAlias>Class Bases</pluralAlias>
+	<bizKey>
+		<![CDATA[throw new java.lang.IllegalArgumentException("Overidden in extension class");]]>
+	</bizKey>
+	<attributes>
+		<association name="type" type="aggregation" required="true">
+			<displayName>Type</displayName>
+			<documentName>ClassType</documentName>
+		</association>
+		<association name="venue" type="aggregation" required="true">
+			<displayName>Venue</displayName>
+			<documentName>Venue</documentName>
+		</association>
+		<enum name="day" required="true">
+			<displayName>Day</displayName>
+			<values>
+				<value code="Sunday" />
+				<value code="Monday" />
+				<value code="Tuesday" />
+				<value code="Wednesday" />
+				<value code="Thursday" />
+				<value code="Friday" />
+				<value code="Saturday" />
+			</values>
+		</enum>
+		<time name="startTime" required="true">
+			<displayName>Start Time</displayName>
+		</time>
+		<time name="endTime" required="true">
+			<displayName>End Time</displayName>
+		</time>
+	</attributes>
+</document>

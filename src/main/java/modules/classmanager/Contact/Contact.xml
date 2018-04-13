@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<document name="Contact" xmlns="http://www.skyve.org/xml/document"
+	xsi:schemaLocation="http://www.skyve.org/xml/document ../../../schemas/document.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<documentation>Contact</documentation>
+	<persistent name="CM_Contact" />
+	<singularAlias>Client</singularAlias>
+	<pluralAlias>Clients</pluralAlias>
+	<bizKey>
+		<![CDATA[throw new java.lang.IllegalArgumentException("Overidden in extension class");]]>
+	</bizKey>
+	<attributes>
+		<text name="firstName" required="true">
+			<displayName>First Name</displayName>
+			<length>100</length>
+		</text>
+		<text name="lastName" required="true">
+			<displayName>Last Name</displayName>
+			<length>100</length>
+		</text>
+		<text name="email" required="true">
+			<displayName>Email</displayName>
+			<length>100</length>
+			<validator type="email" />
+		</text>
+		<text name="phoneNumber" required="true">
+			<displayName>Phone Number</displayName>
+			<length>20</length>
+		</text>
+		<association type="composition" name="address">
+			<displayName>Address</displayName>
+			<documentName>Address</documentName>
+		</association>
+		<content name="image">
+			<displayName>Image</displayName>
+		</content>
+	</attributes>
+</document>

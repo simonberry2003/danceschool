@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<view name="edit" title="TimeTable" xmlns="http://www.skyve.org/xml/view"
+	xsi:schemaLocation="http://www.skyve.org/xml/view ../../../../schemas/view.xsd"
+	xmlns:c="http://www.skyve.org/xml/common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<form border="true" borderTitle="Time Table Details">
+		<column percentageWidth="10" />
+		<column percentageWidth="20" />
+		<column percentageWidth="10" />
+		<column percentageWidth="20" />
+		<column />
+		<row>
+			<item>
+				<textField binding="name" editable="false" />
+			</item>
+		</row>
+		<row>
+			<item>
+				<lookupDescription binding="period"
+					descriptionBinding="bizKey" editable="false" />
+			</item>
+			<item>
+				<button actionName="GenerateForPeriod" />
+			</item>
+		</row>
+	</form>
+	<dataGrid binding="classes">
+		<boundColumn binding="type" />
+		<boundColumn binding="venue" />
+		<boundColumn binding="day" />
+		<boundColumn binding="startTime" />
+		<boundColumn binding="endTime" />
+	</dataGrid>
+	<actions>
+		<defaults />
+		<action className="GenerateForPeriod" displayName="Generate"
+			inActionPanel="false" />
+	</actions>
+</view>

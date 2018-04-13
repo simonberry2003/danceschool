@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<view name="edit" title="Venue" xmlns="http://www.skyve.org/xml/view"
+	xsi:schemaLocation="http://www.skyve.org/xml/view ../../../../schemas/view.xsd"
+	xmlns:c="http://www.skyve.org/xml/common"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<form border="true" borderTitle="Venue Details">
+		<column percentageWidth="10"/>
+		<column percentageWidth="20"/>
+		<column percentageWidth="10"/>
+		<column percentageWidth="20"/>
+		<column/>
+		<row>
+			<item>
+				<default binding="name" />
+			</item>
+		</row>
+		<row>
+			<item>
+				<default binding="address.streetAddress" />
+			</item>
+		</row>
+		<row>
+			<item>
+				<default binding="address.suburb" />
+			</item>
+		</row>
+		<row>
+			<item>
+				<default binding="address.state" />
+			</item>
+		</row>
+		<row>
+			<item>
+				<default binding="address.postcode" />
+			</item>
+		</row>
+	</form>
+	<dataGrid title="Contacts" binding="contacts">
+		<boundColumn binding="firstName" />
+		<boundColumn binding="lastName" />
+		<boundColumn binding="phoneNumber" />
+		<boundColumn binding="email" />
+	</dataGrid>
+	<actions>
+		<defaults/>
+	</actions>
+</view>

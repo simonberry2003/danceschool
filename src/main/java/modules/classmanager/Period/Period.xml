@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<document name="Period" xmlns="http://www.skyve.org/xml/document" xsi:schemaLocation="http://www.skyve.org/xml/document ../../../schemas/document.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<documentation>Period</documentation>
+	<persistent name="CM_Period" />
+	<singularAlias>Period</singularAlias>
+	<pluralAlias>Periods</pluralAlias>
+	<bizKey>
+		<![CDATA[throw new java.lang.IllegalArgumentException("Overidden in extension class");]]>
+	</bizKey>
+	<attributes>
+		<text name="name" required="true">
+			<displayName>Name</displayName>
+			<length>100</length>
+		</text>
+		<date name="start">
+			<displayName>Start</displayName>
+		</date>
+		<date name="end">
+			<displayName>Start</displayName>
+		</date>
+		<boolean name="active">
+			<displayName>Active</displayName>
+		</boolean>
+	</attributes>
+	<uniqueConstraints>
+		<constraint name="OneActivePeriod" scope="customer">
+			<message>Only one active period is allowed</message>
+			<fieldReferences>
+				<ref>active</ref>
+			</fieldReferences>
+		</constraint>
+	</uniqueConstraints>
+</document>

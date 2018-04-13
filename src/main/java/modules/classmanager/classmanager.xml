@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<module name="classmanager" title="Class Manager"
+	xmlns="http://www.skyve.org/xml/module" xsi:schemaLocation="http://www.skyve.org/xml/module ../../schemas/module.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<homeRef>list</homeRef>
+	<homeDocument>Client</homeDocument>
+	<documents>
+		<document ref="Address" />
+		<document ref="Class" />
+		<document ref="ClassBase" />
+		<document ref="ClassDefinition" />
+		<document ref="ClassType" />
+		<document ref="Client" />
+		<document ref="Contact" />
+		<document ref="Attachment" />
+		<document ref="Period" />
+		<document ref="Student" />
+		<document ref="Teacher" />
+		<document ref="TimeTable" />
+		<document ref="Venue" />
+	</documents>
+	<roles>
+		<role name="BasicUser">
+			<description>Able to create a registration.</description>
+			<privileges>
+				<document name="Address" permission="CRUDC" />
+				<document name="Class" permission="CRUDC" />
+				<document name="ClassBase" permission="CRUDC" />
+				<document name="ClassDefinition" permission="CRUDC" />
+				<document name="ClassType" permission="CRUDC" />
+				<document name="Client" permission="CRUDC" />
+				<document name="Contact" permission="CRUDC" />
+				<document name="Attachment" permission="CRUDC" />
+				<document name="Period" permission="CRUDC" />
+				<document name="Student" permission="CRUDC" />
+				<document name="Teacher" permission="CRUDC" />
+				<document name="TimeTable" permission="CRUDC">
+					<action name="GenerateForPeriod" />
+				</document>
+				<document name="Venue" permission="CRUDC" />
+			</privileges>
+		</role>
+	</roles>
+	<menu>
+		<list name="Class Types" document="ClassType">
+			<role name="BasicUser" />
+		</list>
+		<list name="Classes" query="qClasses">
+			<role name="BasicUser" />
+		</list>
+		<list name="Clients" query="qClients">
+			<role name="BasicUser" />
+		</list>
+		<list name="Contacts" document="Contact">
+			<role name="BasicUser" />
+		</list>
+		<list name="Periods" document="Period">
+			<role name="BasicUser" />
+		</list>
+		<list name="Students" document="Student">
+			<role name="BasicUser" />
+		</list>
+		<list name="Teachers" query="qTeachers">
+			<role name="BasicUser" />
+		</list>
+		<list name="Time Tables" document="TimeTable">
+			<role name="BasicUser" />
+		</list>
+		<list name="Venues" document="Venue">
+			<role name="BasicUser" />
+		</list>
+	</menu>
+	<queries>
+		<documentQuery name="qClients" documentName="Client">
+			<description>All Clients</description>
+			<columns>
+				<column binding="contact.firstName" />
+				<column binding="contact.lastName" />
+				<column binding="contact.email" />
+				<column binding="contact.phoneNumber" />
+			</columns>
+		</documentQuery>
+		<documentQuery name="qTeachers" documentName="Teacher">
+			<description>All Teacher</description>
+			<columns>
+				<column binding="contact.firstName" />
+				<column binding="contact.lastName" />
+				<column binding="contact.email" />
+				<column binding="contact.phoneNumber" />
+			</columns>
+		</documentQuery>
+		<documentQuery name="qClasses" documentName="Class">
+			<description>All Classes</description>
+			<columns>
+				<column binding="type" />
+				<column binding="venue" />
+				<column binding="day" />
+				<column binding="date" sortable="true" sortOrder="ascending" />
+				<column binding="startTime" />
+				<column binding="endTime" />
+			</columns>
+		</documentQuery>
+	</queries>
+</module>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<document name="Student" xmlns="http://www.skyve.org/xml/document" xsi:schemaLocation="http://www.skyve.org/xml/document ../../../schemas/document.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<documentation>Student Details</documentation>
+	<persistent name="CM_Student" />
+	<singularAlias>Student</singularAlias>
+	<pluralAlias>Students</pluralAlias>
+	<bizKey>
+		<![CDATA[throw new java.lang.IllegalArgumentException("Overidden in extension class");]]>
+	</bizKey>
+	<attributes>
+		<integer name="studentId">
+			<displayName>Id</displayName>
+		</integer>
+		<text name="firstName" required="true">
+			<displayName>First Name</displayName>
+			<length>100</length>
+		</text>
+		<text name="lastName" required="true">
+			<displayName>Last Name</displayName>
+			<length>100</length>
+		</text>
+		<date name="dateOfBirth" required="true">
+			<displayName>Date of Birth</displayName>
+		</date>
+		<text name="medical">
+			<displayName>Medical</displayName>
+			<length>1000</length>
+		</text>
+		<content name="image">
+			<displayName>Image</displayName>
+		</content>
+	</attributes>
+</document>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<document name="Address" xmlns="http://www.skyve.org/xml/document" xsi:schemaLocation="http://www.skyve.org/xml/document ../../../schemas/document.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<documentation>Address</documentation>
+	<persistent name="CM_Address" />
+	<singularAlias>Address</singularAlias>
+	<pluralAlias>Addresses</pluralAlias>
+	<bizKey>
+		<![CDATA[throw new java.lang.IllegalArgumentException("Overidden in extension class");]]>
+	</bizKey>
+	<attributes>
+		<text name="streetAddress" required="true">
+			<displayName>Street Address</displayName>
+			<length>200</length>
+		</text>
+		<text name="suburb" required="true">
+			<displayName>Suburb</displayName>
+			<length>50</length>
+		</text>
+		<enum typeName="State" name="state" required="true">
+			<displayName>State</displayName>
+			<values>
+				<value code="ACT" />
+				<value code="NSW" />
+				<value code="NT" />
+				<value code="QLD" />
+				<value code="SA" />
+				<value code="TAS" />
+				<value code="VIC" />
+				<value code="WA" />
+			</values>
+		</enum>
+		<integer name="postcode" required="true">
+			<displayName>Postcode</displayName>
+		</integer>
+	</attributes>
+</document>

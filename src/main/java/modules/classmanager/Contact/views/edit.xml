@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<view name="edit" title="Contact" xmlns="http://www.skyve.org/xml/view"
+	xsi:schemaLocation="http://www.skyve.org/xml/view ../../../../schemas/view.xsd"
+	xmlns:c="http://www.skyve.org/xml/common"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<form border="true" borderTitle="Contact details">
+		<column percentageWidth="10"/>
+		<column percentageWidth="20"/>
+		<column percentageWidth="10"/>
+		<column percentageWidth="20"/>
+		<column/>
+		<row>
+			<item>
+				<default binding="firstName" />
+			</item>
+			<item rowspan="4">
+				<contentImage binding="image" pixelHeight="160" pixelWidth="160"/>
+			</item>
+		</row>
+		<row>
+			<item>
+				<default binding="lastName" />
+			</item>
+		</row>
+		<row>
+			<item>
+				<default binding="email" />
+			</item>
+		</row>
+		<row>
+			<item>
+				<default binding="phoneNumber" />
+			</item>
+		</row>
+	</form>
+	<form border="true" borderTitle="Address">
+		<column percentageWidth="10"/>
+		<column percentageWidth="20"/>
+		<column percentageWidth="10"/>
+		<column percentageWidth="20"/>
+		<column/>
+		<row>
+			<item>
+				<default binding="address.streetAddress" />
+			</item>
+		</row>
+		<row>
+			<item>
+				<default binding="address.suburb" />
+			</item>
+		</row>
+		<row>
+			<item>
+				<default binding="address.state" />
+			</item>
+		</row>
+		<row>
+			<item>
+				<default binding="address.postcode" />
+			</item>
+		</row>
+	</form>
+	<actions>
+		<defaults/>
+	</actions>
+</view>

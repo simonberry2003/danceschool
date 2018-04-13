@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<document name="Venue" xmlns="http://www.skyve.org/xml/document" xsi:schemaLocation="http://www.skyve.org/xml/document ../../../schemas/document.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<documentation>Venue</documentation>
+	<persistent name="CM_Venue" />
+	<singularAlias>Venue</singularAlias>
+	<pluralAlias>Venues</pluralAlias>
+	<bizKey>
+		<![CDATA[throw new java.lang.IllegalArgumentException("Overidden in extension class");]]>
+	</bizKey>
+	<attributes>
+		<text name="name" required="true">
+			<displayName>Name</displayName>
+			<length>100</length>
+		</text>
+		<association type="composition" name="address" required="true">
+			<displayName>Address</displayName>
+			<documentName>Address</documentName>
+		</association>
+		<collection name="contacts" type="composition">
+			<displayName>Contacts</displayName>
+			<documentName>Contact</documentName>
+			<minCardinality>0</minCardinality>
+		</collection>
+	</attributes>
+</document>

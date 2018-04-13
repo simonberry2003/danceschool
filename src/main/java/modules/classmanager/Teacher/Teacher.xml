@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<document name="Teacher" xmlns="http://www.skyve.org/xml/document" xsi:schemaLocation="http://www.skyve.org/xml/document ../../../schemas/document.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<documentation>Teacher</documentation>
+	<persistent name="CM_Teacher" />
+	<singularAlias>Teacher</singularAlias>
+	<pluralAlias>Teachers</pluralAlias>
+	<bizKey>
+		<![CDATA[throw new java.lang.IllegalArgumentException("Overidden in extension class");]]>
+	</bizKey>
+	<attributes>
+		<association type="composition" name="contact" required="true">
+			<displayName>Contact</displayName>
+			<documentName>Contact</documentName>
+		</association>
+		<collection name="documents" type="composition">
+			<displayName>Documents</displayName>
+			<documentName>Attachment</documentName>
+			<minCardinality>0</minCardinality>
+		</collection>
+	</attributes>
+</document>

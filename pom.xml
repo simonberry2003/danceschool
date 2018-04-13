@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>simonBerry</groupId>
+	<groupId>danceschool</groupId>
 	<artifactId>hbs</artifactId>
 	<version>0.0.1</version>
 
@@ -92,7 +92,7 @@
 				<version>1.0-SNAPSHOT</version>
 				<configuration>
 					<skyveDir>../skyve</skyveDir>
-					<customer>simonBerry</customer>
+					<customer>hbs</customer>
 					<generateDomainConfig>
 						<debug>false</debug>
 						<dialect>MYSQL</dialect>
@@ -103,7 +103,7 @@
 						<module>${module}</module>
 					</generateEditViewConfig>
 					<generateDefaultQueriesConfig>
-						<customer>simonBerry</customer>
+						<customer>hbs</customer>
 						<module>${module}</module>
 					</generateDefaultQueriesConfig>
 				</configuration>

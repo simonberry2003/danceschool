@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<view name="edit" title="Teacher" xmlns="http://www.skyve.org/xml/view"
+	xsi:schemaLocation="http://www.skyve.org/xml/view ../../../../schemas/view.xsd"
+	xmlns:c="http://www.skyve.org/xml/common"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<form border="true" borderTitle="Teacher Details">
+		<column percentageWidth="10"/>
+		<column percentageWidth="20"/>
+		<column percentageWidth="10"/>
+		<column percentageWidth="20"/>
+		<column/>
+		<row>
+			<item>
+				<default binding="contact.firstName" />
+			</item>
+			<item rowspan="5">
+				<contentImage binding="contact.image" pixelHeight="160" pixelWidth="160"/>
+			</item>
+		</row>
+		<row>
+			<item>
+				<default binding="contact.lastName" />
+			</item>
+		</row>
+		<row>
+			<item>
+				<default binding="contact.email" />
+			</item>
+		</row>
+		<row>
+			<item>
+				<default binding="contact.phoneNumber" />
+			</item>
+		</row>
+	</form>
+	<form border="true" borderTitle="Address">
+		<column percentageWidth="10"/>
+		<column percentageWidth="20"/>
+		<column percentageWidth="10"/>
+		<column percentageWidth="20"/>
+		<column/>
+		<row>
+			<item>
+				<default binding="contact.address.streetAddress" />
+			</item>
+		</row>
+		<row>
+			<item>
+				<default binding="contact.address.suburb" />
+			</item>
+		</row>
+		<row>
+			<item>
+				<default binding="contact.address.state" />
+			</item>
+		</row>
+		<row>
+			<item>
+				<default binding="contact.address.postcode" />
+			</item>
+		</row>
+	</form>
+	<dataGrid binding="documents" title="Documentation"> 
+		<boundColumn binding="name" />
+	</dataGrid>
+	<actions>
+		<defaults/>
+	</actions>
+</view>
