@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<customer xmlns="http://www.skyve.org/xml/customer" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="simonBerry" xsi:schemaLocation="http://www.skyve.org/xml/customer ../../schemas/customer.xsd">
+<customer xmlns="http://www.skyve.org/xml/customer" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="hbs" xsi:schemaLocation="http://www.skyve.org/xml/customer ../../schemas/customer.xsd">
     <uiResources logo="logo.png"/>
     <defaultDateConverter>DD_MM_YYYY</defaultDateConverter>
     <defaultTimeConverter>HH24_MI</defaultTimeConverter>

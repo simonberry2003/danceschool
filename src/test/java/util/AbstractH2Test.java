@@ -20,7 +20,7 @@ import org.skyve.persistence.Persistence;
 
 public abstract class AbstractH2Test {
 	protected static final String USER = "TestUser";
-	protected static final String CUSTOMER = "simonBerry";
+	protected static final String CUSTOMER = "hbs";
 
 	private static final String DB_DIALECT = "org.skyve.impl.persistence.hibernate.dialect.H2SpatialDialect";
 	private static final String DB_DRIVER = "org.h2.Driver";
@@ -48,7 +48,7 @@ public abstract class AbstractH2Test {
 		weld.addPackage(true, CORE.class);
 		weld.initialize();
 	}
-	
+
 	@AfterClass
 	public static void afterClass() throws Exception {
 		if (weld != null) {
