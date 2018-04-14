@@ -22,13 +22,11 @@ public class GeneratePassword implements ServerSideAction<User> {
 		// form
 	}
 
-	@SuppressWarnings({ "unused", "static-access" })
+	@SuppressWarnings({ "static-access" })
 	public static void generatePassword(User user) throws Exception {
 		user.setGeneratedPassword(new PasswordGenerator().generate());
-
 		user.setNewPassword(user.getGeneratedPassword());
 		user.setConfirmPassword(user.getGeneratedPassword());
 		user.setPasswordExpired(Boolean.TRUE);
-
 	}
 }
