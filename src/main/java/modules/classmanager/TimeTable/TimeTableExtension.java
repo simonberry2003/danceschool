@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import org.skyve.CORE;
 import org.skyve.persistence.DocumentQuery;
 
+import lombok.val;
 import modules.classmanager.ClassDefinition.ClassDefinitionExtension;
 import modules.classmanager.domain.Class;
 import modules.classmanager.domain.ClassDefinition;
@@ -38,7 +39,7 @@ public class TimeTableExtension extends TimeTable {
 				query.getFilter().addEquals(ClassDefinition.venuePropertyName, classDefinition.getVenue());
 				query.getFilter().addEquals(ClassDefinition.typePropertyName, classDefinition.getType());
 				if (query.beanResult() == null) {
-					Class classInstance = classDefinition.createClassOn(DateUtil.asDateOnly(date));
+					val classInstance = classDefinition.createClassOn(DateUtil.asDateOnly(date));
 					CORE.getPersistence().save(classInstance);
 				}
 			};

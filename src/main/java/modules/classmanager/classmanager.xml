@@ -92,8 +92,8 @@
 		<documentQuery name="qClasses" documentName="Class">
 			<description>All Classes</description>
 			<columns>
-				<column binding="type" />
-				<column binding="venue" />
+				<column binding="type.bizKey" />
+				<column binding="venue.bizKey" />
 				<column binding="day" />
 				<column binding="date" sortable="true" sortOrder="ascending" />
 				<column binding="startTime" />

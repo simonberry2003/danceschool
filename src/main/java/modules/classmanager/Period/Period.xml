@@ -17,7 +17,7 @@
 			<displayName>Start</displayName>
 		</date>
 		<date name="end">
-			<displayName>Start</displayName>
+			<displayName>End</displayName>
 		</date>
 		<boolean name="active">
 			<displayName>Active</displayName>

@@ -11,7 +11,7 @@
 		<column />
 		<row>
 			<item>
-				<textField binding="name" editable="false" />
+				<textField binding="name" />
 			</item>
 		</row>
 		<row>
