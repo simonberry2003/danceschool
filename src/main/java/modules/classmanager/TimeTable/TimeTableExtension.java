@@ -6,13 +6,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.skyve.CORE;
-import org.skyve.persistence.DocumentQuery;
 
+import lombok.SneakyThrows;
 import lombok.val;
 import modules.classmanager.ClassDefinition.ClassDefinitionExtension;
 import modules.classmanager.domain.Class;
 import modules.classmanager.domain.ClassDefinition;
-import modules.classmanager.domain.Period;
 import modules.classmanager.domain.TimeTable;
 import skyve.util.DateUtil;
 
@@ -23,15 +22,24 @@ public class TimeTableExtension extends TimeTable {
 		return getName();
 	}
 
-	public void generateForPeriod() throws Exception {
-		Period period = getPeriod();
+	@Override
+	public String toString() {
+		return getBizKey();
+	}
+
+	/**
+	 * Generates classes if they don't exist for the selected period for this timetable
+	 */
+	@SneakyThrows
+	public void generateForPeriod() {
+		val period = getPeriod();
 		LocalDate date = DateUtil.asLocalDate(period.getStart());
-		LocalDate end = DateUtil.asLocalDate(period.getEnd());
+		val end = DateUtil.asLocalDate(period.getEnd());
 		while (!date.isAfter(end)) {
-			DayOfWeek day = date.getDayOfWeek();
-			List<ClassDefinitionExtension> classesForDay = getClassesFor(day);
-			for (ClassDefinitionExtension classDefinition : classesForDay) {
-				DocumentQuery query = CORE.getPersistence().newDocumentQuery(Class.MODULE_NAME, Class.DOCUMENT_NAME);
+			val day = date.getDayOfWeek();
+			val classesForDay = getClassesFor(day);
+			for (val classDefinition : classesForDay) {
+				val query = CORE.getPersistence().newDocumentQuery(Class.MODULE_NAME, Class.DOCUMENT_NAME);
 				query.getFilter().addEquals(Class.datePropertyName, DateUtil.asDateOnly(date));
 				query.getFilter().addEquals(ClassDefinition.dayPropertyName, classDefinition.getDay());
 				query.getFilter().addEquals(ClassDefinition.startTimePropertyName, classDefinition.getStartTime());

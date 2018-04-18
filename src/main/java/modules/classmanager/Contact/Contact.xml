@@ -18,19 +18,21 @@
 			<displayName>Last Name</displayName>
 			<length>100</length>
 		</text>
-		<text name="email" required="true">
-			<displayName>Email</displayName>
+		<text name="emailAddress" required="true">
+			<displayName>Email Address</displayName>
 			<length>100</length>
 			<validator type="email" />
 		</text>
-		<text name="phoneNumber" required="true">
-			<displayName>Phone Number</displayName>
-			<length>20</length>
-		</text>
-		<association type="composition" name="address">
-			<displayName>Address</displayName>
+		<collection name="phoneNumbers" type="composition">
+			<displayName>Phone Numbers</displayName>
+			<documentName>PhoneNumber</documentName>
+			<minCardinality>0</minCardinality>
+		</collection>
+		<collection name="addresses" type="composition">
+			<displayName>Addresses</displayName>
 			<documentName>Address</documentName>
-		</association>
+			<minCardinality>0</minCardinality>
+		</collection>
 		<content name="image">
 			<displayName>Image</displayName>
 		</content>

@@ -12,6 +12,11 @@
 		<integer name="clientId">
 			<displayName>Id</displayName>
 		</integer>
+		<text name="externalId">
+			<documentation>Reference to external system such as Xero</documentation>
+			<displayName>External Id</displayName>
+			<length>36</length>
+		</text>
 		<association type="composition" name="contact" required="true">
 			<displayName>Contact</displayName>
 			<documentName>Contact</documentName>
@@ -21,5 +26,9 @@
 			<documentName>Student</documentName>
 			<minCardinality>0</minCardinality>
 		</collection>
+		<boolean name="updated">
+			<displayName>Updated</displayName>
+			<defaultValue>false</defaultValue>
+		</boolean>
 	</attributes>
 </document>

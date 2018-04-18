@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<document name="PhoneNumber" xmlns="http://www.skyve.org/xml/document"
+	xsi:schemaLocation="http://www.skyve.org/xml/document ../../../schemas/document.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<documentation>Phone Number</documentation>
+	<persistent name="CM_PhoneNumber" />
+	<singularAlias>Phone Number</singularAlias>
+	<pluralAlias>Phone Numbers</pluralAlias>
+	<bizKey>
+		<![CDATA[throw new java.lang.IllegalArgumentException("Overidden in extension class");]]>
+	</bizKey>
+	<attributes>
+		<enum typeName="PhoneNumberType" name="type" required="true">
+			<displayName>Type</displayName>
+			<values>
+				<value code="DDI" name="DDI" />
+				<value code="DEFAULT" name="DEFAULT" />
+				<value code="FAX" name="FAX" />
+				<value code="MOBILE" name="MOBILE" />
+			</values>
+		</enum>
+		<text name="countryCode">
+			<displayName>Country Code</displayName>
+			<length>2</length>
+		</text>
+		<text name="areaCode">
+			<displayName>Area Code</displayName>
+			<length>10</length>
+		</text>
+		<text name="number">
+			<displayName>Number</displayName>
+			<length>20</length>
+		</text>
+	</attributes>
+</document>

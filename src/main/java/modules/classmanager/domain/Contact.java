@@ -1,5 +1,7 @@
 package modules.classmanager.domain;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -13,7 +15,8 @@ import org.skyve.impl.domain.AbstractPersistentBean;
  * <br/>
  * Contact
  * 
- * @navcomposed n address 0..1 Address
+ * @navcomposed n addresses 0..n Address
+ * @navcomposed n phoneNumbers 0..n PhoneNumber
  * @stereotype "persistent"
  */
 @XmlType
@@ -35,11 +38,11 @@ public class Contact extends AbstractPersistentBean {
 	/** @hidden */
 	public static final String lastNamePropertyName = "lastName";
 	/** @hidden */
-	public static final String emailPropertyName = "email";
+	public static final String emailAddressPropertyName = "emailAddress";
 	/** @hidden */
-	public static final String phoneNumberPropertyName = "phoneNumber";
+	public static final String phoneNumbersPropertyName = "phoneNumbers";
 	/** @hidden */
-	public static final String addressPropertyName = "address";
+	public static final String addressesPropertyName = "addresses";
 	/** @hidden */
 	public static final String imagePropertyName = "image";
 
@@ -52,17 +55,17 @@ public class Contact extends AbstractPersistentBean {
 	 **/
 	private String lastName;
 	/**
-	 * Email
+	 * Email Address
 	 **/
-	private String email;
+	private String emailAddress;
 	/**
-	 * Phone Number
+	 * Phone Numbers
 	 **/
-	private String phoneNumber;
+	private List<PhoneNumber> phoneNumbers = new ArrayList<>();
 	/**
-	 * Address
+	 * Addresses
 	 **/
-	private Address address = null;
+	private List<Address> addresses = new ArrayList<>();
 	/**
 	 * Image
 	 **/
@@ -141,57 +144,75 @@ throw new java.lang.IllegalArgumentException("Overidden in extension class");
 	}
 
 	/**
-	 * {@link #email} accessor.
+	 * {@link #emailAddress} accessor.
 	 * @return	The value.
 	 **/
-	public String getEmail() {
-		return email;
+	public String getEmailAddress() {
+		return emailAddress;
 	}
 
 	/**
-	 * {@link #email} mutator.
-	 * @param email	The new value.
+	 * {@link #emailAddress} mutator.
+	 * @param emailAddress	The new value.
 	 **/
 	@XmlElement
-	public void setEmail(String email) {
-		preset(emailPropertyName, email);
-		this.email = email;
+	public void setEmailAddress(String emailAddress) {
+		preset(emailAddressPropertyName, emailAddress);
+		this.emailAddress = emailAddress;
 	}
 
 	/**
-	 * {@link #phoneNumber} accessor.
+	 * {@link #phoneNumbers} accessor.
 	 * @return	The value.
 	 **/
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-
-	/**
-	 * {@link #phoneNumber} mutator.
-	 * @param phoneNumber	The new value.
-	 **/
 	@XmlElement
-	public void setPhoneNumber(String phoneNumber) {
-		preset(phoneNumberPropertyName, phoneNumber);
-		this.phoneNumber = phoneNumber;
+	public List<PhoneNumber> getPhoneNumbers() {
+		return phoneNumbers;
 	}
 
 	/**
-	 * {@link #address} accessor.
+	 * {@link #phoneNumbers} accessor.
+	 * @param bizId	The bizId of the element in the list.
+	 * @return	The value of the element in the list.
+	 **/
+	public PhoneNumber getPhoneNumbersElementById(String bizId) {
+		return getElementById(phoneNumbers, bizId);
+	}
+
+	/**
+	 * {@link #phoneNumbers} mutator.
+	 * @param bizId	The bizId of the element in the list.
+	 * @param element	The new value of the element in the list.
+	 **/
+	public void setPhoneNumbersElementById(String bizId, PhoneNumber element) {
+		 setElementById(phoneNumbers, element);
+	}
+
+	/**
+	 * {@link #addresses} accessor.
 	 * @return	The value.
 	 **/
-	public Address getAddress() {
-		return address;
+	@XmlElement
+	public List<Address> getAddresses() {
+		return addresses;
 	}
 
 	/**
-	 * {@link #address} mutator.
-	 * @param address	The new value.
+	 * {@link #addresses} accessor.
+	 * @param bizId	The bizId of the element in the list.
+	 * @return	The value of the element in the list.
 	 **/
-	@XmlElement
-	public void setAddress(Address address) {
-		preset(addressPropertyName, address);
-		this.address = address;
+	public Address getAddressesElementById(String bizId) {
+		return getElementById(addresses, bizId);
+	}
+
+	/**
+	 * {@link #addresses} mutator.
+	 * @param bizId	The bizId of the element in the list.
+	 * @param element	The new value of the element in the list.
+	 **/
+	public void setAddressesElementById(String bizId, Address element) {
+		 setElementById(addresses, element);
 	}
 
 	/**

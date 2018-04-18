@@ -9,5 +9,6 @@ public class ClientBizlet extends Bizlet<ClientExtension> {
 	public void preSave(ClientExtension client) throws Exception {
 		super.preSave(client);
 		client.initialiseId();
+		client.markUpdated();
 	}
 }

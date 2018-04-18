@@ -25,45 +25,33 @@
 		</row>
 		<row>
 			<item>
-				<default binding="contact.email" />
-			</item>
-		</row>
-		<row>
-			<item>
-				<default binding="contact.phoneNumber" />
+				<default binding="contact.emailAddress" />
 			</item>
 		</row>
 	</form>
-	<form border="true" borderTitle="Address">
-		<column percentageWidth="10"/>
-		<column percentageWidth="20"/>
-		<column percentageWidth="10"/>
-		<column percentageWidth="20"/>
-		<column/>
-		<row>
-			<item>
-				<default binding="contact.address.streetAddress" />
-			</item>
-		</row>
-		<row>
-			<item>
-				<default binding="contact.address.suburb" />
-			</item>
-		</row>
-		<row>
-			<item>
-				<default binding="contact.address.state" />
-			</item>
-		</row>
-		<row>
-			<item>
-				<default binding="contact.address.postcode" />
-			</item>
-		</row>
-	</form>
-	<dataGrid binding="documents" title="Documentation"> 
-		<boundColumn binding="name" />
-	</dataGrid>
+	<tabPane>
+		<tab title="Phone Numbers">
+			<dataGrid binding="contact.phoneNumbers">
+				<boundColumn binding="type" />
+				<boundColumn binding="countryCode" />
+				<boundColumn binding="areaCode" />
+				<boundColumn binding="number" />
+			</dataGrid>
+		</tab>
+		<tab title="Addresses">
+			<dataGrid binding="contact.addresses">
+				<boundColumn binding="streetAddress" />
+				<boundColumn binding="suburb" />
+				<boundColumn binding="state" />
+				<boundColumn binding="postcode" />
+			</dataGrid>
+		</tab>
+		<tab title="Documents">
+			<dataGrid binding="documents" title="Documentation"> 
+				<boundColumn binding="name" />
+			</dataGrid>
+		</tab>
+	</tabPane>
 	<actions>
 		<defaults/>
 	</actions>

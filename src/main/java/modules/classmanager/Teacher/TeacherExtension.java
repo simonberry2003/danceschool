@@ -8,4 +8,9 @@ public class TeacherExtension extends Teacher {
 	public String getBizKey() {
 		return getContact().getBizKey();
 	}
+
+	@Override
+	public String toString() {
+		return getBizKey();
+	}
 }

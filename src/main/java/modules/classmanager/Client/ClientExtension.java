@@ -10,9 +10,18 @@ public class ClientExtension extends Client {
 		return String.format("%s (%d)", getContact().getBizKey(), getClientId());
 	}
 
+	@Override
+	public String toString() {
+		return getBizKey();
+	}
+
 	public void initialiseId() throws Exception {
 		if (getClientId() == null) {
 			setClientId(ModulesUtil.getNextDocumentNumber(Client.MODULE_NAME, Client.DOCUMENT_NAME, Client.clientIdPropertyName));
 		}
+	}
+
+	public void markUpdated() {
+		setUpdated(true);
 	}
 }

@@ -8,4 +8,9 @@ public class VenueExtension extends Venue {
 	public String getBizKey() {
 		return getName();
 	}
+
+	@Override
+	public String toString() {
+		return getBizKey();
+	}
 }

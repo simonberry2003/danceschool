@@ -36,14 +36,24 @@ public class Client extends AbstractPersistentBean {
 	/** @hidden */
 	public static final String clientIdPropertyName = "clientId";
 	/** @hidden */
+	public static final String externalIdPropertyName = "externalId";
+	/** @hidden */
 	public static final String contactPropertyName = "contact";
 	/** @hidden */
 	public static final String studentsPropertyName = "students";
+	/** @hidden */
+	public static final String updatedPropertyName = "updated";
 
 	/**
 	 * Id
 	 **/
 	private Integer clientId;
+	/**
+	 * External Id
+	 * <br/>
+	 * Reference to external system such as Xero
+	 **/
+	private String externalId;
 	/**
 	 * Contact
 	 **/
@@ -52,6 +62,10 @@ public class Client extends AbstractPersistentBean {
 	 * Students
 	 **/
 	private List<Student> students = new ArrayList<>();
+	/**
+	 * Updated
+	 **/
+	private Boolean updated = new Boolean(false);
 
 	@Override
 	@XmlTransient
@@ -108,6 +122,24 @@ throw new java.lang.IllegalArgumentException("Overidden in extension class");
 	}
 
 	/**
+	 * {@link #externalId} accessor.
+	 * @return	The value.
+	 **/
+	public String getExternalId() {
+		return externalId;
+	}
+
+	/**
+	 * {@link #externalId} mutator.
+	 * @param externalId	The new value.
+	 **/
+	@XmlElement
+	public void setExternalId(String externalId) {
+		preset(externalIdPropertyName, externalId);
+		this.externalId = externalId;
+	}
+
+	/**
 	 * {@link #contact} accessor.
 	 * @return	The value.
 	 **/
@@ -150,5 +182,23 @@ throw new java.lang.IllegalArgumentException("Overidden in extension class");
 	 **/
 	public void setStudentsElementById(String bizId, Student element) {
 		 setElementById(students, element);
+	}
+
+	/**
+	 * {@link #updated} accessor.
+	 * @return	The value.
+	 **/
+	public Boolean getUpdated() {
+		return updated;
+	}
+
+	/**
+	 * {@link #updated} mutator.
+	 * @param updated	The new value.
+	 **/
+	@XmlElement
+	public void setUpdated(Boolean updated) {
+		preset(updatedPropertyName, updated);
+		this.updated = updated;
 	}
 }

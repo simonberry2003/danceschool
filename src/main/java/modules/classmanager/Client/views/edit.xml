@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <view name="edit" title="Client" xmlns="http://www.skyve.org/xml/view"
 	xsi:schemaLocation="http://www.skyve.org/xml/view ../../../../schemas/view.xsd"
-	xmlns:c="http://www.skyve.org/xml/common"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	xmlns:c="http://www.skyve.org/xml/common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
 	<form border="true" borderTitle="Client Details">
-		<column percentageWidth="10"/>
-		<column percentageWidth="20"/>
-		<column percentageWidth="10"/>
-		<column percentageWidth="20"/>
-		<column/>
+		<column percentageWidth="10" />
+		<column percentageWidth="20" />
+		<column percentageWidth="10" />
+		<column percentageWidth="20" />
+		<column />
 		<row>
 			<item>
 				<textField binding="clientId" editable="false" />
 			</item>
 			<item rowspan="5">
-				<contentImage binding="contact.image" pixelHeight="160" pixelWidth="160"/>
+				<contentImage binding="contact.image" pixelHeight="160"
+					pixelWidth="160" />
 			</item>
 		</row>
 		<row>
@@ -30,43 +30,28 @@
 		</row>
 		<row>
 			<item>
-				<default binding="contact.email" />
-			</item>
-		</row>
-		<row>
-			<item>
-				<default binding="contact.phoneNumber" />
-			</item>
-		</row>
-	</form>
-	<form border="true" borderTitle="Address">
-		<column percentageWidth="10"/>
-		<column percentageWidth="20"/>
-		<column percentageWidth="10"/>
-		<column percentageWidth="20"/>
-		<column/>
-		<row>
-			<item>
-				<default binding="contact.address.streetAddress" />
-			</item>
-		</row>
-		<row>
-			<item>
-				<default binding="contact.address.suburb" />
-			</item>
-		</row>
-		<row>
-			<item>
-				<default binding="contact.address.state" />
-			</item>
-		</row>
-		<row>
-			<item>
-				<default binding="contact.address.postcode" />
+				<default binding="contact.emailAddress" />
 			</item>
 		</row>
 	</form>
 	<tabPane>
+		<tab title="Phone Numbers">
+			<dataGrid binding="contact.phoneNumbers">
+				<boundColumn binding="type" />
+				<boundColumn binding="countryCode" />
+				<boundColumn binding="areaCode" />
+				<boundColumn binding="number" />
+			</dataGrid>
+		</tab>
+		<tab title="Addresses">
+			<dataGrid binding="contact.addresses">
+				<boundColumn binding="type" />
+				<boundColumn binding="streetAddress" />
+				<boundColumn binding="suburb" />
+				<boundColumn binding="state" />
+				<boundColumn binding="postcode" />
+			</dataGrid>
+		</tab>
 		<tab title="Students">
 			<dataGrid binding="students">
 				<boundColumn binding="firstName" title="First Name" />
@@ -75,6 +60,8 @@
 		</tab>
 	</tabPane>
 	<actions>
-		<defaults/>
+		<defaults />
+		<action className="ImportFromXero" displayName="Import From Xero"
+			inActionPanel="true" />
 	</actions>
 </view>

@@ -25,42 +25,22 @@
 		</row>
 		<row>
 			<item>
-				<default binding="email" />
-			</item>
-		</row>
-		<row>
-			<item>
-				<default binding="phoneNumber" />
+				<default binding="emailAddress" />
 			</item>
 		</row>
 	</form>
-	<form border="true" borderTitle="Address">
-		<column percentageWidth="10"/>
-		<column percentageWidth="20"/>
-		<column percentageWidth="10"/>
-		<column percentageWidth="20"/>
-		<column/>
-		<row>
-			<item>
-				<default binding="address.streetAddress" />
-			</item>
-		</row>
-		<row>
-			<item>
-				<default binding="address.suburb" />
-			</item>
-		</row>
-		<row>
-			<item>
-				<default binding="address.state" />
-			</item>
-		</row>
-		<row>
-			<item>
-				<default binding="address.postcode" />
-			</item>
-		</row>
-	</form>
+	<dataGrid binding="phoneNumbers">
+		<boundColumn binding="type" />
+		<boundColumn binding="countryCode" />
+		<boundColumn binding="areaCode" />
+		<boundColumn binding="number" />
+	</dataGrid>
+	<dataGrid binding="addresses" title="Addresses">
+		<boundColumn binding="streetAddress" />
+		<boundColumn binding="suburb" />
+		<boundColumn binding="state" />
+		<boundColumn binding="postcode" />
+	</dataGrid>
 	<actions>
 		<defaults/>
 	</actions>

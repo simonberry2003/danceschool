@@ -17,6 +17,11 @@
 		</row>
 		<row>
 			<item>
+				<default binding="address.type" />
+			</item>
+		</row>
+		<row>
+			<item>
 				<default binding="address.streetAddress" />
 			</item>
 		</row>
@@ -39,8 +44,7 @@
 	<dataGrid title="Contacts" binding="contacts">
 		<boundColumn binding="firstName" />
 		<boundColumn binding="lastName" />
-		<boundColumn binding="phoneNumber" />
-		<boundColumn binding="email" />
+		<boundColumn binding="emailAddress" />
 	</dataGrid>
 	<actions>
 		<defaults/>

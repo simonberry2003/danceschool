@@ -9,6 +9,13 @@
 		<![CDATA[throw new java.lang.IllegalArgumentException("Overidden in extension class");]]>
 	</bizKey>
 	<attributes>
+		<enum typeName="AddressType" name="type" required="true">
+			<displayName>Type</displayName>
+			<values>
+				<value code="STREET" name="STREET" />
+				<value code="POBOX" name="POBOX" />
+			</values>
+		</enum>
 		<text name="streetAddress" required="true">
 			<displayName>Street Address</displayName>
 			<length>200</length>
@@ -20,18 +27,19 @@
 		<enum typeName="State" name="state" required="true">
 			<displayName>State</displayName>
 			<values>
-				<value code="ACT" />
-				<value code="NSW" />
-				<value code="NT" />
-				<value code="QLD" />
-				<value code="SA" />
-				<value code="TAS" />
-				<value code="VIC" />
-				<value code="WA" />
+				<value code="ACT" name="ACT" />
+				<value code="NSW" name="NSW" />
+				<value code="NT" name="NT" />
+				<value code="QLD" name="QLD" />
+				<value code="SA" name="SA" />
+				<value code="TAS" name="TAS" />
+				<value code="VIC" name="VIC" />
+				<value code="WA" name="WA" />
 			</values>
 		</enum>
-		<integer name="postcode" required="true">
+		<text name="postcode" required="true">
 			<displayName>Postcode</displayName>
-		</integer>
+			<length>10</length>
+		</text>
 	</attributes>
 </document>

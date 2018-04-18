@@ -51,7 +51,7 @@ public class Period extends AbstractPersistentBean {
 	 **/
 	private DateOnly start;
 	/**
-	 * Start
+	 * End
 	 **/
 	private DateOnly end;
 	/**

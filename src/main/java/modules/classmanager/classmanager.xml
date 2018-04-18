@@ -18,6 +18,7 @@
 		<document ref="Teacher" />
 		<document ref="TimeTable" />
 		<document ref="Venue" />
+		<document ref="PhoneNumber" />
 	</documents>
 	<roles>
 		<role name="BasicUser">
@@ -28,7 +29,9 @@
 				<document name="ClassBase" permission="CRUDC" />
 				<document name="ClassDefinition" permission="CRUDC" />
 				<document name="ClassType" permission="CRUDC" />
-				<document name="Client" permission="CRUDC" />
+				<document name="Client" permission="CRUDC">
+					<action name="ImportFromXero" />
+				</document>
 				<document name="Contact" permission="CRUDC" />
 				<document name="Attachment" permission="CRUDC" />
 				<document name="Period" permission="CRUDC" />
@@ -38,35 +41,37 @@
 					<action name="GenerateForPeriod" />
 				</document>
 				<document name="Venue" permission="CRUDC" />
+				<document name="PhoneNumber" permission="CRUDC" />
 			</privileges>
 		</role>
 	</roles>
 	<menu>
-		<list name="Class Types" document="ClassType">
-			<role name="BasicUser" />
-		</list>
-		<list name="Classes" query="qClasses">
-			<role name="BasicUser" />
-		</list>
+		<group name="Setup">
+			<list name="Class Types" document="ClassType">
+				<role name="BasicUser" />
+			</list>
+			<list name="Periods" document="Period">
+				<role name="BasicUser" />
+			</list>
+			<list name="Teachers" query="qTeachers">
+				<role name="BasicUser" />
+			</list>
+			<list name="Venues" document="Venue">
+				<role name="BasicUser" />
+			</list>
+		</group>
+		<group name="Classes">
+			<list name="Time Tables" document="TimeTable">
+				<role name="BasicUser" />
+			</list>
+			<list name="Classes" query="qClasses">
+				<role name="BasicUser" />
+			</list>
+			<list name="Students" document="Student">
+				<role name="BasicUser" />
+			</list>
+		</group>
 		<list name="Clients" query="qClients">
-			<role name="BasicUser" />
-		</list>
-		<list name="Contacts" document="Contact">
-			<role name="BasicUser" />
-		</list>
-		<list name="Periods" document="Period">
-			<role name="BasicUser" />
-		</list>
-		<list name="Students" document="Student">
-			<role name="BasicUser" />
-		</list>
-		<list name="Teachers" query="qTeachers">
-			<role name="BasicUser" />
-		</list>
-		<list name="Time Tables" document="TimeTable">
-			<role name="BasicUser" />
-		</list>
-		<list name="Venues" document="Venue">
 			<role name="BasicUser" />
 		</list>
 	</menu>
@@ -74,10 +79,10 @@
 		<documentQuery name="qClients" documentName="Client">
 			<description>All Clients</description>
 			<columns>
+				<column binding="clientId" pixelWidth="100" />
 				<column binding="contact.firstName" />
 				<column binding="contact.lastName" />
-				<column binding="contact.email" />
-				<column binding="contact.phoneNumber" />
+				<column binding="contact.emailAddress" />
 			</columns>
 		</documentQuery>
 		<documentQuery name="qTeachers" documentName="Teacher">
@@ -85,8 +90,7 @@
 			<columns>
 				<column binding="contact.firstName" />
 				<column binding="contact.lastName" />
-				<column binding="contact.email" />
-				<column binding="contact.phoneNumber" />
+				<column binding="contact.emailAddress" />
 			</columns>
 		</documentQuery>
 		<documentQuery name="qClasses" documentName="Class">

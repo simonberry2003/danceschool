@@ -8,4 +8,9 @@ public class ClassTypeExtension extends ClassType {
 	public String getBizKey() {
 		return getName();
 	}
+
+	@Override
+	public String toString() {
+		return getBizKey();
+	}
 }

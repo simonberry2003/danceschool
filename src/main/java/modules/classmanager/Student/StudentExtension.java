@@ -10,6 +10,11 @@ public class StudentExtension extends Student {
 		return String.format("%s %s (%d)", getFirstName(), getLastName(), getStudentId());
 	}
 
+	@Override
+	public String toString() {
+		return getBizKey();
+	}
+
 	public void initialiseId() throws Exception {
 		if (getStudentId() == null) {
 			setStudentId(ModulesUtil.getNextDocumentNumber(Student.MODULE_NAME, Student.DOCUMENT_NAME, Student.studentIdPropertyName));

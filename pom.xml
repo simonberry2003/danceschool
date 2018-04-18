@@ -153,6 +153,7 @@
 				<configuration>
 					<forkCount>${forkCount}</forkCount>
 					<argLine>${argLine} -Xmx1024m</argLine>
+			        <skipTests>true</skipTests>
 				</configuration>
 			</plugin>
 			<plugin>
